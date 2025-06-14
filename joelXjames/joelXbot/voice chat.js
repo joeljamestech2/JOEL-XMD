@@ -22,7 +22,7 @@ const chatbotCommand = async (m, Matrix) => {
         if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
 
         const responseData = await response.json();
-        const joelReply = responseData.message || 'Oops! I couldn’t quite catch that 😅. Can you try again?';
+        const joelReply = responseData.message || '';
 
         // TTS Voice Note
         const ttsUrl = `https://api.nexoracle.com/tts/text-to-speech?apikey=33241c3a8402295fdc&lang=en-US&text=${encodeURIComponent(joelReply)}`;
@@ -31,7 +31,7 @@ const chatbotCommand = async (m, Matrix) => {
             const { data } = await axios.get(ttsUrl);
             if (!data?.status || !data?.result) {
                 await Matrix.sendMessage(senderId, {
-                    text: "🥺 Aw no! I couldn't turn that into a voice note... Try again?"
+                    text: ""
                 }, { quoted: m });
                 return;
             }
@@ -45,14 +45,14 @@ const chatbotCommand = async (m, Matrix) => {
         } catch (ttsErr) {
             console.error('TTS API error:', ttsErr);
             await Matrix.sendMessage(senderId, {
-                text: "⚠️ Uh-oh! Something went wrong with the magic spell... Try again later?"
+                text: ""
             }, { quoted: m });
         }
 
     } catch (err) {
         console.error('Chatbot error:', err);
         await Matrix.sendMessage(senderId, {
-            text: '❌ Oh no, something went wrong. Please try again later! 💔'
+            text: ''
         }, { quoted: m });
     }
 };
