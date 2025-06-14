@@ -70,14 +70,15 @@ const chatbotCommand = async (m, Matrix) => {
 
         let answer = (await response.json()).message || 'Oops! I couldn’t quite catch that 😅. Can you try again?';
 
-        // Identity replacements
+        // Identity and branding replacements
         answer = answer
             .replace(/I am a large language model, trained by Google\.?/gi, "I am Joel XMD bot, trained by Lord Joel.")
             .replace(/by Google/gi, "by Lord Joel")
             .replace(/large language model/gi, "Joel XMD bot")
             .replace(/\bGemini\b/gi, "Joel AI")
             .replace(/\bI'm Gemini\b/gi, "I'm Joel AI")
-            .replace(/Yes, I am Gemini\./gi, "I'm Joel XMD bot developed by Lord Joel.");
+            .replace(/Yes, I am Gemini\./gi, "I'm Joel XMD bot developed by Lord Joel.")
+            .replace(/I do not have an owner or a phone number/gi, "Here are my owner WhatsApp phonephone numbers: \njoeljamestech +255714595878, \njoeljamestech2 +255781144539, \njoeljamestech3 +255767570963");
 
         await Matrix.sendMessage(senderId, {
             text: `${answer}`,
@@ -94,9 +95,8 @@ const chatbotCommand = async (m, Matrix) => {
         }, { quoted: m });
 
     } catch (err) {
-        // Silent fail - don't send error to user
         console.error('Joel AI error:', err.message);
-        return;
+        // Silent fail - do not send message to user
     }
 };
 
