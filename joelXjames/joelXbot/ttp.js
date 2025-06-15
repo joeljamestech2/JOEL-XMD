@@ -1,58 +1,22 @@
-import axios from 'axios';
 import config from '../../config.cjs';
 
-const attpHandler = async (m, sock) => {
-  try {
-    if (!m?.from || !m?.body || !sock) return;
+const attpCommandHandler = async (m, gss) => {
+  const prefix = config.PREFIX;
+  const cmd = m.body.startsWith(prefix)
+    ? m.body.slice(prefix.length).split(' ')[0].toLowerCase()
+    : '';
+  const text = m.body.slice(prefix.length + cmd.length).trim();
 
-    const prefix = config.PREFIX || '!';
-    const body = m.body || '';
-    if (!body.startsWith(prefix)) return;
+  if (!['attp', 'attp2', 'attp3'].includes(cmd)) return;
+  if (!text) return m.reply(`Usage: ${prefix}${cmd}attp lord joel`);
 
-    const cmd = body.slice(prefix.length).split(' ')[0].toLowerCase();
-    const text = body.slice(prefix.length + cmd.length).trim();
+  const stickerUrl = `https://api.nexoracle.com/image-creating/${cmd}?apikey=33241c3a8402295fdc&text=${encodeURIComponent(text)}`;
 
-    const validCommands = ['attp', 'ttp'];
-    if (!validCommands.includes(cmd)) return;
-
-    if (!text) {
-      await sock.sendMessage(m.from, {
-        text: "✨ Please give me something cute to turn into a sticker!\nExample: *.attp Hello!*"
-      }, { quoted: m });
-      if (typeof m.React === 'function') await m.React('❌');
-      return;
-    }
-
-    if (typeof m.React === 'function') await m.React('🎨');
-
-    const apiUrl = `https://api.nexoracle.com/image-creating/attp?apikey=33241c3a8402295fdc&text=${encodeURIComponent(text)}`;
-
-    try {
-      const { data } = await axios.get(apiUrl, { responseType: 'arraybuffer' });
-
-      await sock.sendMessage(m.from, {
-        sticker: data,
-        packname: 'Joel Xmd',
-        author: 'by Lord Joel',
-      }, { quoted: m });
-
-      if (typeof m.React === 'function') await m.React('✨');
-
-    } catch (err) {
-      console.error('ATTP API error:', err);
-      await sock.sendMessage(m.from, {
-        text: "❌ Uh-oh! Couldn't create the sticker... Try a shorter or simpler word?"
-      }, { quoted: m });
-      if (typeof m.React === 'function') await m.React('❌');
-    }
-
-  } catch (error) {
-    console.error('ATTP handler error:', error);
-    await sock.sendMessage(m.from, {
-      text: "⚠️ Oopsie! Something broke while making your sticker..."
-    }, { quoted: m });
-    if (typeof m.React === 'function') await m.React('❌');
-  }
+  await gss.sendImageAsSticker(m.from, stickerUrl, m, {
+    packname: 'jᴏᴇʟ xᴍᴅ',
+    author: 'ʙᴏᴛ',
+    type: 'full',
+  });
 };
-
-export default attpHandler;
+//codes by lord joel 
+export default attpCommandHandler;
