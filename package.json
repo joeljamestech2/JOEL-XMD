@@ -5,9 +5,9 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "start": "pm2 start index.js --deep-monitoring --attach --name  JOEL-XMD-BOT",
+    "start": "node index.js",
     "stop": "pm2 stop JOEL-XMD-BOT",
-    "restart": "pm2 restart  JOEL-XMD-BOT"
+    "restart": "pm2 restart JOEL-XMD-BOT"
   },
   "keywords": ["lord-joel", "whatsapp-bot", "whatsapp md bot"],
   "author": "joeljamestech",
@@ -65,4 +65,4 @@
     "wasitech": "npm:@distube/ytdl-core",
     "yt-search": "^2.11.0"
   }
-}
+  }
