@@ -1,23 +1,16 @@
-FROM node:lts-bookworm
+FROM node:lts-buster
 
-# Install system dependencies
-RUN apt-get update && \
-  apt-get install -y \
-  ffmpeg \
-  imagemagick \
-  webp && \
-  rm -rf /var/lib/apt/lists/*
+# Clone bot from GitHub
+RUN git clone https://github.com/joeljamestech2/JOEL-XMD.git /root/joel-xmd
 
-# Copy package.json and package-lock.json first (better caching)
-COPY package*.json ./
+# Set working directory
+WORKDIR /root/arslan-bot
 
 # Install dependencies
-RUN npm install
+RUN npm install && npm install -g pm2 || yarn install --network-concurrency 1
 
-# Copy the rest of the app
-COPY . .
+# Expose port
+EXPOSE 9090
 
-EXPOSE 3000
-
-# Run using pm2-runtime (Heroku prefers this for Docker)
-CMD ["npx", "pm2-runtime", "index.js", "--name", "JOEL-XMD-BOT"]
+# Start the bot
+CMD ["npm", "start"]

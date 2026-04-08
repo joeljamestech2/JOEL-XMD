@@ -1,6 +1,5 @@
 build:
   docker:
-    web: Dockerfile
-
+      worker: DockerFile
 run:
-  web: npm start
+   worker: npm install -g pm2 && npm start
