@@ -135,16 +135,16 @@ const port = process.env.PORT || 9090;
   } else if (connection === 'open') {
   console.log('🧬 Installing Plugins')
   const path = require('path');
-  fs.readdirSync("./plugins/").forEach((plugin) => {
+  fs.readdirSync("./joelXtech/").forEach((plugin) => {
   if (path.extname(plugin).toLowerCase() == ".js") {
-  require("./plugins/" + plugin);
+  require("./joelXtech/" + plugin);
   }
   });
   console.log('Plugins installed successful ✅')
   console.log('Bot connected to whatsapp ✅')
   
   let up = `*Hello there JOEL XMD User! \ud83d\udc4b\ud83c\udffb* \n\n> Simple , Straight Forward But Loaded With Features \ud83c\udf8a, Meet JOEL XMD WhatsApp Bot.\n\n *Thanks for using JOEL XMD \ud83d\udea9*`;
-    conn.sendMessage(conn.user.id, { image: { url: `https://files.catbox.moe/l7d81a.png` }, caption: up })
+    conn.sendMessage(conn.user.id, { image: { url: `` }, caption: up })
   }
   })
   conn.ev.on('creds.update', saveCreds)
