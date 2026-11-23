@@ -1,16 +1,10 @@
-FROM node:lts-buster
+FROM quay.io/qasimtech/mega-md:latest
 
-# Clone bot from GitHub
-RUN git clone https://github.com/joeljamestech2/JOEL-XMD.git /root/joel-xmd
+WORKDIR /root/mega-md
 
-# Set working directory
-WORKDIR /root/arslan-bot
+RUN git clone https://github.com/joeljamestech/JOEL-XMD . && \
+    npm install
 
-# Install dependencies
-RUN npm install && npm install -g pm2 || yarn install --network-concurrency 1
+EXPOSE 5000
 
-# Expose port
-EXPOSE 9090
-
-# Start the bot
 CMD ["npm", "start"]

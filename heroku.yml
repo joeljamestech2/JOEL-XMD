@@ -1,5 +1,6 @@
 build:
   docker:
-      worker: DockerFile
+    web: lib/Dockerfile
+
 run:
-   worker: npm install -g pm2 && npm start
+  web: npm run start:optimized

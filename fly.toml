@@ -1,0 +1,28 @@
+app = "mega-md"
+primary_region = "iad"
+
+[build]
+  dockerfile = "lib/Dockerfile"
+
+[env]
+  PORT = "5000"
+  BOT_NAME = "JOEL-XMD"
+  COMMAND_MODE = "public"
+  TIMEZONE = "Tanzania/Dodoma"
+  SESSION_ID = ""
+  OWNER_NUMBER = "255781144539"
+  MONGO_URL = ""
+  POSTGRES_URL = ""
+  MYSQL_URL = ""
+  DB_URL = ""
+
+[http_service]
+  internal_port = 5000
+  force_https = true
+  auto_stop_machines = false
+  auto_start_machines = true
+
+[[vm]]
+  memory = "512mb"
+  cpu_kind = "shared"
+  cpus = 1
