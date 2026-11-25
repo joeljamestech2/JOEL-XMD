@@ -21,16 +21,18 @@ src="assets/jxmd.gif"/>
 
 <a href='https://github.com/joeljamestech2/JOEL-XMD/fork' target="_blank"><img alt='joel' src='https://img.shields.io/badge/FORK REPO-h?color=navy&style=for-the-badge&logo=visualstudiocode'/></a></p>
 
-**PAIRING CODE**
-set:process.env.PAIRING_NUMBER
+**ᴘᴀɪʀɪɴɢ ᴄᴏᴅᴇ**
 
+
+
+
+sᴇᴛ: `process.env.PAIRING_NUMBER`
+
+```env
+PAIRING_NUMBER=your_phone_number_eg_25578114453
 ```
-env
-PAIRING_NUMBER= your phoneNumber eg 255781144539
-```
 
-•  The bot will print an 8-character pairing code in the terminal on startup. Link it via WhatsApp  Linked Devices  Link with phone number within 60 seconds.
-
+•  ᴛʜᴇ ʙᴏᴛ ᴡɪʟʟ ᴘʀɪɴᴛ ᴀɴ 8-ᴄʜᴀʀᴀᴄᴛᴇʀ ᴘᴀɪʀɪɴɢ ᴄᴏᴅᴇ ɪɴ ᴛʜᴇ ᴛᴇʀᴍɪɴᴀʟ ᴏɴ sᴛᴀʀᴛᴜᴘ. ʟɪɴᴋ ɪᴛ ᴠɪᴀ ᴡʜᴀᴛsᴀᴘᴘ → ʟɪɴᴋᴇᴅ ᴅᴇᴠɪᴄᴇs → ʟɪɴᴋ ᴡɪᴛʜ ᴘʜᴏɴᴇ ɴᴜᴍʙᴇʀ ᴡɪᴛʜɪɴ 60 sᴇᴄᴏɴᴅs.
 
 <a href='https://joel-xmd-bot.onrender.com' target="_blank"><img alt='joel' src='https://img.shields.io/badge/WATCH VIDEO-h?color=navy&style=for-the-badge&logo=visualstudiocode'/></a></p>
 
