@@ -5,8 +5,8 @@
   "repository": "https://github.com/joeljamestech/JOEL-XMD",
   "stack": "container",
   "env": {
-    "SESSION_ID": {
-      "description": "Your session ID (get it by running the bot locally first)",
+    "PAIRING_NUMBER": {
+      "description": "The whatsApp number where the bot deployed too",
       "required": true,
       "value": ""
     },
